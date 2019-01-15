@@ -22,9 +22,13 @@ cd $HBP/Models
 ```
 
 ## Controlling the robot
-```rosparam set /cardsflow_xml ~/.gazebo/models/musc-le/cardsflow.xml```
+```
+rosparam set /cardsflow_xml ~/.gazebo/models/musc-le/cardsflow.xml
+```
+
 Navigate to http://localhost:9001/#/esv-private?dev, clone Myoarm 2 DOF experiment and launch it.
 `rostopic list` should show `/roboy/middleware/MotorStatus` and `/roboy/middleware/MotorCommand`.
+
 For example, command 
 ```
 rostopic pub /roboy/middleware/MotorCommand roboy_middleware_msgs/MotorCommand "id: 0
