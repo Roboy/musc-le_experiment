@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="http://schemas.humanbrainproject.eu/SP10/2014/ExDConfig"
+     xsi:schemaLocation="http://schemas.humanbrainproject.eu/SP10/2014/ExDConfig ../ExDConfFile.xsd">
+    <name>2 DOF NST Myorobotics Arm</name>
+    <thumbnail>Myo_NST.jpg</thumbnail>
+    <description>Loads the 2 DOF Myorobotics Arm into the Holodeck. Muscles can be controlled via ROS messages.</description>
+    <timeout>1000000000</timeout>
+    <configuration type="3d-settings" src="holodeck.ini"/>
+    <configuration type="brainvisualizer" src="brainvisualizer.json"/>
+	<configuration type="user-interaction-settings" src="holodeck.uis"/>
+
+    <maturity>development</maturity>
+    <environmentModel src="cdp1_world/cdp1_world_holodeck.sdf">
+        <robotPose x="3" y="-1.2" z="1.33" roll="0.0" pitch="-0.0" yaw="1.570796"/>
+    </environmentModel>
+
+    <bibiConf src="Myo_NST.bibi"/>
+
+    <cameraPose>
+        <cameraPosition x="2.650596943953666" y="-3.3037450422457924" z="1.7963657402299325 "/>
+        <cameraLookAt x="3" y="-1.2" z="1.53"/>
+    </cameraPose>
+
+    <physicsEngine>ode</physicsEngine>
+    <gzbridgesettings>
+        <pose_update_delta_translation>1.e-12</pose_update_delta_translation>
+        <pose_update_delta_rotation>1.e-12</pose_update_delta_rotation>
+        <pose_update_early_threshold>0.02</pose_update_early_threshold>
+    </gzbridgesettings>
+</ExD>
