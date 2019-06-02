@@ -5,15 +5,18 @@ Neurorobotics platform experiment description featuring 2DOF tendon-driven arm
 
 ## Setup
 ```
+sudo apt install -y libxml++2.6-dev ros-kinetic-interactive-markers ros-kinetic-tf-conversions ros-kinetic-eigen-conversions
+
 cd $HBP/Experiments
 git clone https://github.com/Roboy/musc-le_experiment.git
 mv musc-le/* myoarm_nst
 
 cd $HBP/GazeboRosPackages/src
-git clone https://github.com/CARDSflow/robots.git
-git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b muscle-fix
+git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b gazebo7
 git clone https://github.com/Roboy/common_utilities.git
 git clone https://github.com/Roboy/roboy_communication.git
+
+cd ..
 catkin_make
 
 ln -s $PWD/robots/musc-le $HBP/Models
