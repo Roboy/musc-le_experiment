@@ -15,11 +15,12 @@ cd $HBP/GazeboRosPackages/src
 git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b gazebo7
 git clone https://github.com/Roboy/common_utilities.git
 git clone https://github.com/Roboy/roboy_communication.git
+git clone https://github.com/Roboy/musc-le_models.git
 
 cd ..
 catkin_make
 
-ln -s $PWD/robots/musc-le $HBP/Models
+ln -s $HBP/GazeboRosPackages/src/musc-le_models/musc-le $HBP/Models
 cd $HBP/Models
 ./create-symlinks.sh
 ```
