@@ -3,7 +3,12 @@ Neurorobotics platform experiment description featuring 2DOF tendon-driven arm
 
 ![alt text](https://github.com/Roboy/musc-le_experiment/blob/master/images/screen.jpg)
 
-## Setup
+## Setup in NRP
+
+Prerequisites (included in NRP installation):
+- ROS kinetic
+- Gazebo7
+
 ```
 sudo apt install -y libxml++2.6-dev ros-kinetic-interactive-markers ros-kinetic-tf-conversions ros-kinetic-eigen-conversions
 
@@ -62,4 +67,29 @@ Additionally, muscle velocity and muscle length control modes are available.
 To monitor the status of the robot's muscles:
 ```
 rostopic echo /roboy/middleware/MotorStatus 
+```
+
+## Alternative setup with Gazebo only
+
+```
+sudo apt install -y libxml++2.6-dev ros-kinetic-interactive-markers ros-kinetic-tf-conversions ros-kinetic-eigen-conversions
+```
+
+```
+mdkir ~/musc_ws/src -p
+cd ~/musc_ws/src
+
+# for ROS kinetic + Gazebo7
+git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b gazebo7
+# for ROS melodic + Gazebo9
+git clone https://github.com/CARDSflow/cardsflow_gazebo.git
+
+git clone https://github.com/Roboy/common_utilities.git
+git clone https://github.com/Roboy/roboy_communication.git
+git clone https://github.com/Roboy/musc-le_models.git
+
+cd ..
+catkin_make
+
+ln -s ~/musc_ws/src/musc-le_models/musc_le ~/.gazebo/models
 ```
