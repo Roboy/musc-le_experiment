@@ -34,7 +34,7 @@ Navigate to http://localhost:9000/#/esv-private?dev, clone Myoarm 2 DOF experime
 `rostopic list` should show `/roboy/middleware/MotorStatus` and `/roboy/middleware/MotorCommand`. Don't start the experiment yet.
 
 Adjust NRP physics properties using the following command: 
-`rosservice call /gazebo/set_physics_properties "time_step: 0.001
+```rosservice call /gazebo/set_physics_properties "time_step: 0.001
 max_update_rate: 1000.0
 gravity: {x: 0.0, y: 0.0, z: -9.8}
 ode_config: {auto_disable_bodies: false, sor_pgs_precon_iters: 0, sor_pgs_iters: 50,
@@ -43,10 +43,11 @@ ode_config: {auto_disable_bodies: false, sor_pgs_precon_iters: 0, sor_pgs_iters:
 opensim_config: {integrator: '', integrator_accuracy: 0.0, min_step_size: 0.0, stiffness: 0.0,
   dissipation: 0.0, transitionVelocity: 0.0, staticFriction: 0.0, dynamicFriction: 0.0,
   viscousFriction: 0.0}"
-  `
+  ```
+  
 Click play. Now you can control the robot. 
 
-By default all muscles are in the displacement mode, i.e. controlling the spring compression.
+By default all muscles are in the displacement mode, i.e. controlling the spring compression. Initial setpoint is set to 0.
 
 For example, command 
 ```
@@ -55,6 +56,8 @@ motors: [0,1,2,3]
 set_points: [0,200,0,0]"
 ```
 will make the muscle with id 1 contract untill its spring displacement reaches 200 encoder ticks (~25 N). The setpoint will be kept unless a new command arrives. 
+
+Additionally, muscle velocity and muscle length control modes are available.
 
 To monitor the status of the robot's muscles:
 ```
