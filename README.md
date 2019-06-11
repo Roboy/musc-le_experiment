@@ -36,7 +36,6 @@ rosparam set /cardsflow_xml ~/.gazebo/models/musc-le/cardsflow.xml
 ```
 
 Navigate to http://localhost:9000/#/esv-private?dev, clone Myoarm 2 DOF experiment and launch it.
-`rostopic list` should show `/roboy/middleware/MotorStatus` and `/roboy/middleware/MotorCommand`. Don't start the experiment yet.
 
 Adjust NRP physics properties using the following command: 
 ```rosservice call /gazebo/set_physics_properties "time_step: 0.001
@@ -51,6 +50,8 @@ opensim_config: {integrator: '', integrator_accuracy: 0.0, min_step_size: 0.0, s
   ```
   
 Click play. Now you can control the robot. 
+
+`rostopic list` should show `/roboy/middleware/MotorStatus` and `/roboy/middleware/MotorCommand`. Don't start the experiment yet.
 
 By default all muscles are in the displacement mode, i.e. controlling the spring compression. Initial setpoint is set to 0.
 
