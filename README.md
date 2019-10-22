@@ -25,14 +25,14 @@ git clone https://github.com/Roboy/musc-le_models.git
 cd ..
 catkin_make
 
-cp -a $HBP/GazeboRosPackages/src/musc-le_models/musc-le $HBP/Models
+cp -a $HBP/GazeboRosPackages/src/musc-le_models/musc_le $HBP/Models
 cd $HBP/Models
 ./create-symlinks.sh
 ```
 
 ## Controlling the robot
 ```
-rosparam set /cardsflow_xml ~/.gazebo/models/musc-le/cardsflow.xml
+rosparam set /cardsflow_xml ~/.gazebo/models/musc_le/cardsflow.xml
 ```
 
 Navigate to http://localhost:9000/#/esv-private?dev, clone Myoarm 2 DOF experiment and launch it.
