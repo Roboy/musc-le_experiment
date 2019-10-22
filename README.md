@@ -53,13 +53,13 @@ Click play. Now you can control the robot.
 
 `rostopic list` should show `/roboy/middleware/MotorStatus` and `/roboy/middleware/MotorCommand`. Don't start the experiment yet.
 
-By default all muscles are in the displacement mode, i.e. controlling the spring compression. Initial setpoint is set to 0.
+By default all muscles are in the force mode, i.e. controlling the spring compression. Initial setpoint is set to 0.
 
 For example, command 
 ```
 rostopic pub /roboy/middleware/MotorCommand roboy_middleware_msgs/MotorCommand "id: 0
 motors: [0,1,2,3]
-set_points: [0,200,0,0]"
+set_points: [0,30,0,0]"
 ```
 will make the muscle with id 1 contract untill its spring displacement reaches 200 encoder ticks (~25 N). The setpoint will be kept unless a new command arrives. 
 
