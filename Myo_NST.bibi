@@ -8,5 +8,5 @@
     <!--<populations population="neurons" xsi:type="Range" from="0" to="2"/>-->
     <!--<populations population="record" xsi:type="Range" from="0" to="2"/>-->
   </brainModel>
-  <bodyModel>musc-le/model.sdf</bodyModel>
+  <bodyModel>musc_le/model.sdf</bodyModel>
 </bibi>
