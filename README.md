@@ -8,7 +8,7 @@ Neurorobotics platform experiment description featuring 2DOF tendon-driven arm
 ### Ubuntu 18
 This NRP is shipped with ROS melodic and Gazebo 9
 
-Get prerequisited
+Get prerequisites
 ```
 sudo apt install ros-$ROS_DISTRO-desktop-full libeigen3-dev libxml2-dev coinor-libipopt-dev \
 qtbase5-dev qtdeclarative5-dev qtmultimedia5-dev qml-module-qtquick2 \
