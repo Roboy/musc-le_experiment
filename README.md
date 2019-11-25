@@ -5,6 +5,50 @@ Neurorobotics platform experiment description featuring 2DOF tendon-driven arm
 
 ## Setup in NRP
 
+### Ubuntu 18
+This NRP is shipped with ROS melodic and Gazebo 9
+
+Get prerequisited
+```
+sudo apt install ros-$ROS_DISTRO-desktop-full libeigen3-dev libxml2-dev coinor-libipopt-dev \
+qtbase5-dev qtdeclarative5-dev qtmultimedia5-dev qml-module-qtquick2 \
+qml-module-qtquick-window2 qml-module-qtmultimedia qml-module-qtquick-dialogs \
+qml-module-qtquick-controls qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings \
+ros-$ROS_DISTRO-moveit-msgs doxygen swig mscgen ros-$ROS_DISTRO-grid-map \
+ros-$ROS_DISTRO-controller-interface ros-$ROS_DISTRO-controller-manager ros-$ROS_DISTRO-aruco-detect \
+ros-$ROS_DISTRO-effort-controllers libxml++2.6-dev ros-$ROS_DISTRO-robot-localization libalglib-dev \
+ros-$ROS_DISTRO-tf ros-$ROS_DISTRO-interactive-markers ros-$ROS_DISTRO-tf-conversions \
+ros-$ROS_DISTRO-robot-state-publisher
+```
+
+Update the NST arm experiment
+```
+cd $HBP/Experiments
+git clone https://github.com/Roboy/musc-le_experiment.git
+mv musc-le_experiment/* myoarm_nst
+```
+
+Compile the custom myorobotics model plugin & it's dependencies
+```
+cd $HBP/GazeboRosPackages/src
+git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b nrp-gazebo
+git clone https://github.com/Roboy/common_utilities.git
+git clone https://github.com/Roboy/roboy_communication.git
+git clone https://github.com/Roboy/musc-le_models.git
+
+cd ..
+catkin_make
+```
+
+Update model & links
+```
+cp -a $HBP/GazeboRosPackages/src/musc-le_models/musc_le $HBP/Models
+cd $HBP/Models
+./create-symlinks.sh
+```
+Note: if you used the `Myoarm NST 2 DOF` experiment before, delete it from the list of experiments in the NRP GUI and clone anew from the templates list (found at http://localhost:9000/#/esv-private?dev).
+
+### Ubuntu 16
 Prerequisites (included in NRP installation):
 - ROS kinetic
 - Gazebo7
