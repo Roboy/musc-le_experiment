@@ -28,7 +28,7 @@ git clone https://github.com/Roboy/musc-le_experiment.git
 mv musc-le_experiment/* myoarm_nst
 ```
 
-Compile the custom myorobotics model plugin & it's dependencies
+Compile the custom myorobotics model plugin & its dependencies
 ```
 cd $HBP/GazeboRosPackages/src
 git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b nrp-gazebo
@@ -40,7 +40,7 @@ cd ..
 catkin_make
 ```
 
-Update model & links
+Update the model & links
 ```
 cp -a $HBP/GazeboRosPackages/src/musc-le_models/musc_le $HBP/Models
 cd $HBP/Models
