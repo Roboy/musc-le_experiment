@@ -33,7 +33,7 @@ Compile the custom myorobotics model plugin & its dependencies
 cd $HBP/GazeboRosPackages/src
 git clone https://github.com/CARDSflow/cardsflow_gazebo.git
 git clone https://github.com/Roboy/common_utilities.git
-git clone https://github.com/Roboy/roboy_communication.git
+git clone https://github.com/Roboy/roboy_communication.git -b kth
 git clone https://github.com/Roboy/musc-le_models.git
 
 cd ..
