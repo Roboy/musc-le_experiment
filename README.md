@@ -43,6 +43,7 @@ catkin_make
 Update the model & links
 ```
 cp -a $HBP/GazeboRosPackages/src/musc-le_models/musc_le $HBP/Models
+cp -a $HBP/GazeboRosPackages/src/musc-le_models/musc_le_table $HBP/Models
 cd $HBP/Models
 ./create-symlinks.sh
 ```
@@ -63,13 +64,14 @@ mv musc-le_experiment/* myoarm_nst
 cd $HBP/GazeboRosPackages/src
 git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b gazebo7
 git clone https://github.com/Roboy/common_utilities.git
-git clone https://github.com/Roboy/roboy_communication.git
+git clone https://github.com/Roboy/roboy_communication.git -b kth
 git clone https://github.com/Roboy/musc-le_models.git
 
 cd ..
 catkin_make
 
 cp -a $HBP/GazeboRosPackages/src/musc-le_models/musc_le $HBP/Models
+cp -a $HBP/GazeboRosPackages/src/musc-le_models/musc_le_table $HBP/Models
 cd $HBP/Models
 ./create-symlinks.sh
 ```
@@ -81,7 +83,7 @@ rosparam set /cardsflow_xml ~/.gazebo/models/musc_le/cardsflow.xml
 
 Navigate to http://localhost:9000/#/esv-private?dev, clone Myoarm 2 DOF experiment and launch it.
 
-Adjust NRP physics properties using the following command: 
+Adjust NRP physics properties using the following command (optional): 
 ```rosservice call /gazebo/set_physics_properties "time_step: 0.001
 max_update_rate: 1000.0
 gravity: {x: 0.0, y: 0.0, z: -9.8}
@@ -98,6 +100,7 @@ Click play. Now you can control the robot.
 `rostopic list` should show `/roboy/middleware/MotorStatus` and `/roboy/middleware/MotorCommand`. Don't start the experiment yet.
 
 By default all muscles are in the force mode, i.e. controlling the spring compression. Initial setpoint is set to 0.
+By default, muscles are set to `FORCE` mode.
 
 For example, command 
 ```
@@ -105,7 +108,7 @@ rostopic pub /roboy/middleware/MotorCommand roboy_middleware_msgs/MotorCommand "
 motors: [0,1,2,3]
 set_points: [0,30,0,0]"
 ```
-will make the muscle with id 1 contract untill its spring displacement reaches 200 encoder ticks (~25 N). The setpoint will be kept unless a new command arrives. 
+will make the muscle with id 1 apply the force of 30 N at the muscle origin, which is propagated to all attachement points of this muscle. The setpoint will be kept unless a new command arrives. 
 
 Additionally, muscle velocity and muscle length control modes are available.
 
@@ -113,6 +116,18 @@ To monitor the status of the robot's muscles:
 ```
 rostopic echo /roboy/middleware/MotorStatus 
 ```
+
+## Handling balls
+`musc_le_table` model contains 3 balls:
+- cricket_ball_5000g
+- cricket_ball_2000g
+- cricket_ball_200g
+
+Initially the `cricket_ball_200g` is attached to the arm and the rest fall freely.
+To detach the current ball use:
+```rosservice call /roboy/simulation/joint/detach```
+To attach the ball of your choice, pass the name to the following ROS service:
+```rosservice call /roboy/simulation/joint/attach "text: 'robot::cricket_ball_200g'"```
 
 ## Alternative setup with Gazebo only
 
@@ -125,12 +140,12 @@ mdkir ~/musc_ws/src -p
 cd ~/musc_ws/src
 
 # for ROS kinetic + Gazebo7
-git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b gazebo7
+git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b gazebo7 
 # for ROS melodic + Gazebo9
-git clone https://github.com/CARDSflow/cardsflow_gazebo.git
+git clone https://github.com/CARDSflow/cardsflow_gazebo.git -b kth
 
 git clone https://github.com/Roboy/common_utilities.git
-git clone https://github.com/Roboy/roboy_communication.git
+git clone https://github.com/Roboy/roboy_communication.git -b kth
 git clone https://github.com/Roboy/musc-le_models.git
 
 cd ..
