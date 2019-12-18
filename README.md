@@ -124,8 +124,10 @@ rostopic echo /roboy/middleware/MotorStatus
 - cricket_ball_200g
 
 Initially the `cricket_ball_200g` is attached to the arm and the rest fall freely.
+
 To detach the current ball use:
 ```rosservice call /roboy/simulation/joint/detach```
+
 To attach the ball of your choice, pass the name to the following ROS service:
 ```rosservice call /roboy/simulation/joint/attach "text: 'robot::cricket_ball_200g'"```
 
