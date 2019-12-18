@@ -11,15 +11,15 @@
 	<configuration type="user-interaction-settings" src="holodeck.uis"/>
 
     <maturity>development</maturity>
-    <environmentModel src="cdp1_world/cdp1_world_holodeck.sdf">
-        <robotPose x="3" y="-1.2" z="1.33" roll="0.0" pitch="-0.0" yaw="1.570796"/>
+    <environmentModel src="empty_virtuallab/empty_virtuallab.sdf">
+        <robotPose x="0" y="-5.0" z="1.32" roll="3.14" pitch="-0.0" yaw="-3.14"/>
     </environmentModel>
 
     <bibiConf src="Myo_NST.bibi"/>
 
     <cameraPose>
-        <cameraPosition x="2.650596943953666" y="-3.3037450422457924" z="1.7963657402299325 "/>
-        <cameraLookAt x="3" y="-1.2" z="1.53"/>
+        <cameraPosition x="2.650596943953666" y="-1.3037450422457924" z="0.7963657402299325 "/>
+        <cameraLookAt x="0" y="-5" z="1.3"/>
     </cameraPose>
 
     <physicsEngine>ode</physicsEngine>
