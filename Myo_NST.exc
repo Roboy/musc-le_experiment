@@ -2,7 +2,7 @@
 <ExD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xmlns="http://schemas.humanbrainproject.eu/SP10/2014/ExDConfig"
      xsi:schemaLocation="http://schemas.humanbrainproject.eu/SP10/2014/ExDConfig ../ExDConfFile.xsd">
-    <name>2 DOF NST Myorobotics Arm</name>
+    <name>2 DOF Myorobotics Arm</name>
     <thumbnail>Myo_NST.jpg</thumbnail>
     <description>Loads the 2 DOF Myorobotics Arm into the Holodeck. Muscles can be controlled via ROS messages.</description>
     <timeout>1000000000</timeout>
